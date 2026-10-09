@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Venez avec votre idée, repartez avec votre application — Formation à Abidjan</title>
+<script>
+document.documentElement.classList.add('js');
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');
+</script>
+<meta name="description" content="Formation à Abidjan : apprenez les bases avec l’IA sur un projet commun, puis construisez votre propre application Android, accompagné jusqu’à la demande de publication sur Google Play. Sans expérience en programmation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1F2A44;
+  --navy-2: #2B3A5C;
+  --gold: #C9A227;
+  --gold-text: #7A5F0C;
+  --bg: #F3F5F8;
+  --surface: #FFFFFF;
+  --ink: #1E2533;
+  --muted: #566074;
+  --line: #D6DCE5;
+  --hero-bg: #1F2A44;
+  --hero-ink: #F4F1E8;
+  --hero-muted: #C9D1DF;
+  --pill-ink: #1F2A44;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111827;
+    --surface: #18223A;
+    --ink: #EEF1F6;
+    --muted: #A9B3C5;
+    --line: #2C3850;
+    --gold-text: #E2C25A;
+    --hero-bg: #0D1424;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111827;
+  --surface: #18223A;
+  --ink: #EEF1F6;
+  --muted: #A9B3C5;
+  --line: #2C3850;
+  --gold-text: #E2C25A;
+  --hero-bg: #0D1424;
+  color-scheme: dark;
+}
+
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 84px;
+}
+h1, h2, h3 {
+  font-family: 'Manrope', 'Segoe UI', Helvetica, Arial, sans-serif;
+  line-height: 1.12;
+  margin: 0;
+  text-wrap: balance;
+}
+p { margin: 0; text-wrap: pretty; }
+a { color: inherit; }
+img { max-width: 100%; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+section.block { padding: 64px 0; border-top: 1px solid var(--line); }
+section.block h2 { font-size: clamp(28px, 4.4vw, 40px); font-weight: 800; color: var(--ink); max-width: 22ch; }
+.lead { color: var(--muted); max-width: 60ch; margin-top: 14px; }
+
+/* Boutons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 52px; padding: 0 24px; border-radius: 14px;
+  font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 16px;
+  text-decoration: none; transition: transform .15s ease, background-color .15s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-gold { background: var(--gold); color: var(--navy); }
+.btn-gold:hover { background: #D8B23A; }
+.btn-line { border: 2px solid currentColor; color: var(--hero-ink); }
+.btn-line:hover { background: rgba(255,255,255,.08); }
+
+/* En-tête */
+.hero { background: var(--hero-bg); color: var(--hero-ink); padding: 40px 0 56px; overflow: hidden; }
+.hero-grid { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 880px) { .hero-grid { grid-template-columns: 1.15fr 0.85fr; gap: 56px; } .hero { padding: 72px 0 80px; } }
+.brand { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 15px; color: var(--gold); margin-bottom: 28px; }
+.hero h1 { font-size: clamp(38px, 7vw, 64px); font-weight: 800; letter-spacing: -0.02em; }
+.hero .sub { margin-top: 20px; font-size: 19px; color: var(--hero-muted); max-width: 46ch; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 30px 0 32px; max-width: 520px; }
+.facts div { border-top: 2px solid var(--gold); padding-top: 10px; }
+.facts dt { font-size: 14px; color: var(--hero-muted); }
+.facts dd { margin: 2px 0 0; font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 19px; color: var(--hero-ink); }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Téléphone : l'application que les participants construisent */
+.phone-wrap { display: flex; justify-content: center; }
+.phone {
+  width: 280px; border-radius: 40px; padding: 12px; background: #0B111E;
+  box-shadow: 0 0 0 2px var(--navy-2), 0 30px 60px rgba(0,0,0,.35);
+}
+.screen { border-radius: 30px; overflow: hidden; background: #F7F8FA; color: #1E2533; }
+.app-bar { background: #1F2A44; color: #fff; padding: 26px 18px 14px; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 15px; }
+.app-body { padding: 18px 16px 22px; display: grid; gap: 14px; }
+.app-title { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 21px; color: #1F2A44; }
+.pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.pill { font-size: 11.5px; font-weight: 700; color: #fff; padding: 4px 10px; border-radius: 99px; }
+.row { display: flex; justify-content: space-between; align-items: center; background: #fff; border: 1px solid #E1E6EE; border-radius: 12px; padding: 10px 12px; }
+.row strong { font-size: 13.5px; display: block; }
+.row span.small { font-size: 12px; color: #5B6475; }
+.app-btn { background: #1F2A44; color: #fff; text-align: center; border-radius: 12px; padding: 12px; font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 14px; }
+.phone-caption { text-align: center; font-size: 14px; color: var(--hero-muted); margin-top: 14px; }
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { opacity: 0; transform: translateY(8px); animation: rise .5s ease forwards; }
+  .reveal:nth-child(1) { animation-delay: .25s; } .reveal:nth-child(2) { animation-delay: .45s; }
+  .reveal:nth-child(3) { animation-delay: .65s; } .reveal:nth-child(4) { animation-delay: .85s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+}
+
+/* Ce que vous construisez */
+.features { display: grid; gap: 18px 28px; margin-top: 32px; }
+@media (min-width: 720px) { .features { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.feature h3 { font-size: 19px; font-weight: 800; }
+.feature p { color: var(--muted); margin-top: 4px; }
+.examples { margin-top: 28px; padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; }
+
+/* Programme */
+.weeks { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 0; counter-reset: w; }
+.weeks li { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.weeks li:first-child { border-top: 1px solid var(--line); }
+@media (max-width: 560px) { .weeks li { grid-template-columns: 1fr; gap: 4px; } }
+.weeks .wk { font-family: 'Manrope', sans-serif; font-weight: 800; color: var(--gold-text); }
+.weeks h3 { font-size: 18px; font-weight: 800; }
+.weeks p { color: var(--muted); font-size: 16px; margin-top: 2px; }
+.weeks li.final .wk { color: var(--ink); }
+
+/* Coûts */
+.cost { width: 100%; border-collapse: collapse; margin-top: 28px; background: var(--surface); border-radius: 16px; overflow: hidden; border: 1px solid var(--line); }
+.cost-wrap { overflow-x: auto; }
+.cost th, .cost td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.cost th { font-size: 14px; color: var(--muted); font-weight: 500; }
+.cost td.num { text-align: right; white-space: nowrap; font-family: 'Manrope', sans-serif; font-weight: 800; }
+.cost tr.total td { border-bottom: none; background: rgba(201,162,39,.14); font-weight: 700; }
+.note { font-size: 15px; color: var(--muted); margin-top: 12px; max-width: 70ch; }
+
+.two { display: grid; gap: 28px; margin-top: 30px; }
+@media (min-width: 820px) { .two { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.checklist li { padding-left: 30px; position: relative; }
+.checklist li::before { content: ""; position: absolute; left: 0; top: 7px; width: 16px; height: 16px; border-radius: 4px; border: 2px solid var(--gold); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px 22px 24px; }
+.panel h3 { font-size: 19px; font-weight: 800; margin-bottom: 10px; }
+
+/* Formateur */
+.trainer { display: grid; gap: 24px; margin-top: 28px; align-items: start; }
+@media (min-width: 820px) { .trainer { grid-template-columns: 1.3fr 1fr; } }
+.quote { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 21px; line-height: 1.35; color: var(--ink); }
+
+/* Atelier */
+.workshop { background: var(--navy); color: var(--hero-ink); border-radius: 24px; padding: 32px 26px; display: grid; gap: 20px; }
+@media (min-width: 820px) { .workshop { grid-template-columns: 1.4fr 1fr; align-items: center; padding: 40px; } }
+.workshop h2 { color: var(--hero-ink) !important; }
+.workshop p { color: var(--hero-muted); }
+.when { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 22px; color: var(--gold); }
+
+/* Étapes */
+.steps { list-style: none; padding: 0; margin: 30px 0 0; display: grid; gap: 16px; }
+@media (min-width: 820px) { .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.steps li { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+.steps .n { width: 38px; height: 38px; border-radius: 99px; background: var(--gold); color: var(--navy); display: grid; place-items: center; font-family: 'Manrope', sans-serif; font-weight: 800; margin-bottom: 12px; }
+.steps h3 { font-size: 18px; font-weight: 800; }
+.steps p { color: var(--muted); margin-top: 4px; font-size: 16px; }
+
+/* Questions */
+.faq { margin-top: 26px; border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 18px 40px 18px 0; position: relative; font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 18px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 14px; font-size: 26px; font-weight: 500; color: var(--gold-text); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding: 0 0 18px; color: var(--muted); max-width: 70ch; }
+
+.conditions { margin: 22px 0 0; padding-left: 20px; color: var(--muted); display: grid; gap: 8px; max-width: 75ch; }
+
+footer { padding: 40px 0 56px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; }
+footer strong { color: var(--ink); }
+
+/* Barre d'inscription fixe sur mobile */
+.sticky-cta {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+  background: var(--hero-bg);
+  background: color-mix(in srgb, var(--hero-bg) 94%, transparent);
+  backdrop-filter: blur(8px);
+  display: flex; gap: 10px; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+.sticky-cta span { color: var(--hero-ink); font-size: 14px; line-height: 1.3; }
+.sticky-cta .btn { min-height: 46px; padding: 0 18px; font-size: 15px; white-space: nowrap; }
+@media (min-width: 880px) { .sticky-cta { display: none; } body { padding-bottom: 0; } }
+
+/* ---------- Animations ---------- */
+.btn { will-change: transform; }
+html.motion .btn:hover { transform: translateY(-2px); }
+html.motion .btn-gold:hover { box-shadow: 0 10px 24px rgba(201,162,39,.28); }
+
+/* Entrée de l'en-tête : un seul mouvement orchestré */
+html.motion .intro > * { opacity: 0; transform: translateY(18px); animation: introUp .75s cubic-bezier(.2,.7,.2,1) forwards; }
+html.motion .intro > *:nth-child(1) { animation-delay: .05s; }
+html.motion .intro > *:nth-child(2) { animation-delay: .15s; }
+html.motion .intro > *:nth-child(3) { animation-delay: .32s; }
+html.motion .intro > *:nth-child(4) { animation-delay: .48s; }
+html.motion .intro > *:nth-child(5) { animation-delay: .62s; }
+html.motion .phone-col { opacity: 0; transform: translateY(34px) rotate(-3deg); animation: phoneIn 1s .35s cubic-bezier(.2,.7,.2,1) forwards; }
+@keyframes introUp { to { opacity: 1; transform: none; } }
+@keyframes phoneIn { to { opacity: 1; transform: none; } }
+
+/* Démonstration : on écrit à Codex, l'application change */
+.prompt { width: 300px; margin: 0 auto 16px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 16px; padding: 12px 14px; min-height: 92px; }
+.prompt-label { font-size: 12.5px; color: var(--gold); font-family: 'Manrope', sans-serif; font-weight: 700; }
+.prompt-text { font-size: 14.5px; color: var(--hero-ink); margin-top: 4px; min-height: 22px; }
+.caret { display: inline-block; width: 2px; height: 1em; background: var(--gold); vertical-align: -2px; margin-left: 2px; }
+html.motion .caret { animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.prompt-status { font-size: 12.5px; color: var(--hero-muted); margin-top: 6px; min-height: 18px; transition: color .3s ease; }
+.prompt-status.done { color: #9FD9B3; }
+.search { max-height: 0; opacity: 0; overflow: hidden; background: #fff; border: 1.5px solid #E1E6EE; border-radius: 10px; padding: 0 12px; font-size: 13px; color: #5B6475; transition: max-height .5s ease, opacity .4s ease, padding .5s ease, box-shadow .6s ease; }
+.search.on { max-height: 44px; opacity: 1; padding: 9px 12px; box-shadow: 0 0 0 3px rgba(201,162,39,.45); }
+.search.on.settled { box-shadow: none; }
+html.motion .pill.pulse { animation: pulse .9s ease 2; }
+@keyframes pulse { 50% { transform: scale(1.12); box-shadow: 0 0 0 4px rgba(201,162,39,.4); } }
+html:not(.motion) .search { max-height: 44px; opacity: 1; padding: 9px 12px; }
+
+/* Apparition au défilement, avec un trait or sous chaque titre */
+section.block h2::after { content: ""; display: block; width: 56px; height: 4px; border-radius: 2px; background: var(--gold); margin-top: 16px; transform-origin: left; }
+html.motion [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1); transition-delay: calc(var(--i, 0) * 90ms); }
+html.motion [data-reveal].is-in { opacity: 1; transform: none; }
+html.motion h2[data-reveal]::after { transform: scaleX(0); transition: transform .7s .25s cubic-bezier(.2,.7,.2,1); }
+html.motion h2[data-reveal].is-in::after { transform: scaleX(1); }
+
+/* Programme : chaque semaine se coche en défilant */
+.weeks .wk { position: relative; padding-left: 20px; }
+.weeks .wk::before { content: ""; position: absolute; left: 0; top: .5em; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--gold); background: var(--gold); }
+html.motion .weeks .wk::before { background: transparent; transition: background-color .4s .35s ease, transform .4s .35s ease; }
+html.motion .weeks li.is-in .wk::before { background: var(--gold); transform: scale(1.15); }
+
+/* Étapes d'inscription : les numéros apparaissent l'un après l'autre */
+html.motion .steps li .n { transform: scale(.3); opacity: 0; transition: transform .5s cubic-bezier(.3,1.6,.5,1), opacity .3s ease; transition-delay: calc(var(--i, 0) * 120ms + 250ms); }
+html.motion .steps li.is-in .n { transform: none; opacity: 1; }
+
+/* Questions : la réponse se déplie */
+html.motion .faq details[open] p { animation: faqIn .3s ease both; }
+@keyframes faqIn { from { opacity: 0; transform: translateY(-6px); } }
+
+/* Barre d'inscription mobile : elle monte quand le bouton du haut sort de l'écran */
+html.js .sticky-cta { transform: translateY(120%); }
+html.motion .sticky-cta { transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+html.js .sticky-cta.show { transform: none; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="intro">
+      <p class="brand">Formation hybride à Abidjan, promotion 1</p>
+      <h1>Venez avec votre idée, repartez avec votre application</h1>
+      <p class="sub">Apprenez les bases avec l’IA sur un projet commun, puis construisez votre propre application Android, accompagné jusqu’à la demande de publication sur Google Play. Aucune expérience en programmation n’est demandée.</p>
+      <dl class="facts">
+        <div><dt>Places</dt><dd>10</dd></div>
+        <div><dt>Début</dt><dd>2 novembre 2026</dd></div>
+        <div><dt>Prix</dt><dd>75 000 FCFA</dd></div>
+      </dl>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="https://forms.gle/A-REMPLACER" target="_blank" rel="noopener">Remplir le formulaire</a>
+        <a class="btn btn-line" href="https://wa.me/225XXXXXXXXXX?text=Bonjour%20Edouard%2C%20j%E2%80%99ai%20une%20question%20sur%20la%20formation%20IA%20et%20mobile." target="_blank" rel="noopener">Poser une question sur WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="phone-col">
+      <div class="prompt" aria-hidden="true">
+        <div class="prompt-label">Vous, à Codex :</div>
+        <div class="prompt-text"><span id="typed">Ajoute une barre de recherche en haut de la liste.</span><span class="caret"></span></div>
+        <div class="prompt-status done" id="status">C’est fait. Testez sur votre téléphone.</div>
+      </div>
+      <div class="phone-wrap" aria-hidden="true">
+        <div class="phone">
+          <div class="screen">
+            <div class="app-bar">Accueil</div>
+            <div class="app-body">
+              <div class="app-title">Mon Carnet Clients</div>
+              <div class="pills">
+                <span class="pill" style="background:#5B6475">Nouveau</span>
+                <span class="pill" style="background:#1B6CA8">Contacté</span>
+                <span class="pill" style="background:#9A6B00">Rendez-vous</span>
+                <span class="pill" style="background:#2F7D4F">Terminé</span>
+              </div>
+              <div style="display:grid;gap:8px">
+                <div class="search on settled" id="demoSearch">Rechercher un client</div>
+                <div class="row reveal"><div><strong>Aya Konan</strong><span class="small">Coiffure, tresses</span></div><span class="pill" style="background:#9A6B00">Rendez-vous</span></div>
+                <div class="row reveal"><div><strong>Boutique Yao</strong><span class="small">Site de commandes</span></div><span class="pill" style="background:#1B6CA8">Contacté</span></div>
+                <div class="row reveal"><div><strong>Mariam Touré</strong><span class="small">Cours de maths</span></div><span class="pill" id="demoPill" style="background:#5B6475">Nouveau</span></div>
+                <div class="app-btn reveal">Ajouter un prospect</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="phone-caption">Vous décrivez ce que vous voulez, l’IA modifie l’application, vous vérifiez sur votre téléphone.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="block" id="projet" style="border-top:none">
+    <div class="wrap">
+      <h2>Votre idée devient votre application</h2>
+      <p class="lead">Vous construisez votre propre application, pour votre activité : une première version solide, installée sur votre téléphone et prête pour Google Play.</p>
+      <div class="features">
+        <div class="feature"><h3>Des comptes sécurisés</h3><p>Chaque utilisateur se connecte et ne voit que ses propres données.</p></div>
+        <div class="feature"><h3>Des fiches complètes</h3><p>Les commandes, les rendez-vous ou les élèves de votre activité, avec tous leurs détails.</p></div>
+        <div class="feature"><h3>Des statuts clairs</h3><p>Nouveau, en cours, terminé : vous savez toujours où en est chaque fiche.</p></div>
+        <div class="feature"><h3>Recherche et tableau de bord</h3><p>Retrouver une fiche en quelques secondes et voir votre activité d’un coup d’œil.</p></div>
+      </div>
+      <p class="examples">Quelques idées qui entrent dans une première version : les rendez-vous d’un salon, les commandes d’une boutique, les élèves d’un répétiteur, les prospects d’une agence. Les paiements, les cartes ou les photos viennent dans une version 2. Nous vérifions votre idée ensemble dès la première séance.</p>
+    </div>
+  </section>
+
+  <section class="block" id="programme">
+    <div class="wrap">
+      <h2>Deux étapes jusqu’à votre application</h2>
+      <p class="lead">D’abord, on apprend ensemble sur un même projet, pour maîtriser les outils sans risque. Ensuite, chacun construit le sien, accompagné jusqu’à Google Play.</p>
+      <ol class="weeks">
+        <li><span class="wk">Novembre</span><div><h3>Étape 1 — Apprendre sur un projet commun</h3><p>Toute la promotion construit le même projet : écrans, comptes sécurisés, données en ligne, et la méthode pour corriger une erreur avec l’IA. Lundi et jeudi de 19 h à 21 h en ligne, samedi de 10 h à 12 h en salle.</p></div></li>
+        <li><span class="wk">Décembre</span><div><h3>Étape 2 — Construire votre application</h3><p>Chacun construit la sienne avec ce qu’il a appris. Une rencontre en salle chaque samedi de 10 h à 12 h, et un groupe WhatsApp pour vos blocages entre deux rencontres.</p></div></li>
+        <li><span class="wk">19 déc.</span><div><h3>Test fermé sur Google Play</h3><p>Les applications prêtes entrent en test avec 12 testeurs pendant 14 jours. Les autres suivent en janvier.</p></div></li>
+        <li><span class="wk">9 janv.</span><div><h3>Démonstration finale</h3><p>Vous présentez votre application, sur votre téléphone, devant la promotion.</p></div></li>
+        <li class="final"><span class="wk">Suivi</span><div><h3>Retours de Google et publication</h3><p>30 jours d’accompagnement, jusqu’au 8 février, pour publier votre application.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="cout">
+    <div class="wrap">
+      <h2>Le coût total, sans surprise</h2>
+      <p class="lead">Le prix de la formation, plus les outils que vous payez directement, à votre nom. Vous restez propriétaire de vos comptes et de votre application.</p>
+      <div class="cost-wrap">
+        <table class="cost">
+          <thead><tr><th scope="col">Poste</th><th scope="col" style="text-align:right">Montant</th><th scope="col">Précision</th></tr></thead>
+          <tbody>
+            <tr><td>Formation, hors abonnements</td><td class="num">75 000 FCFA</td><td>En 3 versements de 25 000 FCFA</td></tr>
+            <tr><td>ChatGPT Plus, pour l’assistant de code</td><td class="num">≈ 23 000 FCFA</td><td>2 mois, par carte bancaire</td></tr>
+            <tr><td>Compte développeur Google Play</td><td class="num">≈ 14 500 FCFA</td><td>25 USD, une seule fois</td></tr>
+            <tr class="total"><td>Total maximum</td><td class="num" id="total" data-count="112500">≈ 112 500 FCFA</td><td>Les autres outils sont gratuits</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Montants des outils approximatifs, calculés à environ 570 FCFA pour 1 USD, hors frais bancaires éventuels. Ils se paient par carte Visa ou Mastercard, bancaire ou prépayée.</p>
+
+      <div class="two">
+        <div class="panel">
+          <h3>Ce qu’il vous faut</h3>
+          <ul class="checklist">
+            <li>Une idée d’application, même simple</li>
+            <li>Un ordinateur portable (Windows, macOS ou Linux, 8 Go de RAM conseillés)</li>
+            <li>Un téléphone Android récent (un deuxième téléphone ou un téléphone emprunté suffit)</li>
+            <li>Une adresse Gmail</li>
+            <li>Une carte utilisable pour les paiements en ligne</li>
+            <li>Avoir 18 ans ou plus, avec une pièce d’identité</li>
+            <li>Une connexion internet stable le soir, et Zoom sur l’ordinateur</li>
+            <li>2 à 4 heures de pratique par semaine en novembre, 4 à 6 heures ensuite</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Où et quand</h3>
+          <p><strong>Étape 1, du 2 au 28 novembre :</strong> lundi et jeudi de 19 h à 21 h en ligne sur Zoom (séances enregistrées), samedi de 10 h à 12 h en salle.</p>
+          <p style="margin-top:10px"><strong>Étape 2, du 30 novembre au 9 janvier :</strong> le samedi de 10 h à 12 h en salle, et le groupe WhatsApp. Pause pour les fêtes.</p>
+          <p style="margin-top:10px"><strong>La salle :</strong> salle de conférence d’Omniprésence Communication, 2 Plateaux Sococé, non loin de la Fondation Magic System. Séance de préparation technique le samedi 31 octobre, de 10 h à 13 h.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="formateur">
+    <div class="wrap">
+      <h2>Votre formateur</h2>
+      <div class="trainer">
+        <div>
+          <p><strong>Edouard</strong>, développeur Full Stack web et mobile depuis 4 ans, cofondateur d’AT Digital Consulting.</p>
+          <p style="margin-top:12px">Il a créé et publié <a href="https://play.google.com/store/apps/details?id=com.edouarddev.MainDor" target="_blank" rel="noopener">MainDor</a>, une application qui met en relation parents et enseignants pour les cours à domicile. Il a franchi lui-même chaque étape de Google Play que vous allez traverser.</p>
+        </div>
+        <p class="quote">« L’IA écrit beaucoup de code. Ce qui compte, c’est de savoir la guider, vérifier son travail et corriger ses erreurs. C’est ce que je vous apprends. »</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="atelier">
+    <div class="wrap">
+      <div class="workshop">
+        <div>
+          <h2>Venez voir avant de vous décider</h2>
+          <p style="margin-top:12px">Un atelier découverte gratuit d’une heure : démonstration en direct d’une application modifiée par l’IA, présentation des deux étapes et réponses à vos questions. Venez avec votre idée : on regarde ensemble ce qui tient dans une première version.</p>
+        </div>
+        <div>
+          <p class="when">Samedi 24 octobre</p>
+          <p style="margin:6px 0 18px">10 h – 11 h, salle de conférence d’Omniprésence Communication, 2 Plateaux Sococé</p>
+          <a class="btn btn-gold" href="https://wa.me/225XXXXXXXXXX?text=Bonjour%20Edouard%2C%20je%20r%C3%A9serve%20ma%20place%20pour%20l%E2%80%99atelier%20d%C3%A9couverte%20du%2024%20octobre." target="_blank" rel="noopener">Réserver ma place sur WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="inscription">
+    <div class="wrap">
+      <h2>S’inscrire en trois étapes</h2>
+      <p class="lead">Inscriptions jusqu’au vendredi 30 octobre 2026, dans la limite de 10 places.</p>
+      <ol class="steps">
+        <li><div class="n">1</div><h3>Remplissez le formulaire</h3><p>Deux minutes pour nous parler de vous, de votre matériel et de votre idée.</p></li>
+        <li><div class="n">2</div><h3>Réglez l’acompte</h3><p>25 000 FCFA par [Wave, Orange Money ou espèces] pour réserver votre place. Un reçu vous est remis.</p></li>
+        <li><div class="n">3</div><h3>Rejoignez le groupe</h3><p>Vous recevez la checklist d’installation et le rendez-vous de la séance de préparation du 31 octobre.</p></li>
+      </ol>
+      <div class="cta-row" style="margin-top:26px">
+        <a class="btn btn-gold" href="https://forms.gle/A-REMPLACER" target="_blank" rel="noopener">Remplir le formulaire</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="questions">
+    <div class="wrap">
+      <h2>Vos questions</h2>
+      <div class="faq">
+        <details><summary>Faut-il savoir programmer ?</summary><p>Non. Vous apprenez à travailler avec l’IA et à comprendre l’essentiel du code qu’elle produit, pas à tout écrire vous-même.</p></details>
+        <details><summary>Puis-je créer l’application de mon choix ?</summary><p>Oui, c’est le cœur de la formation : vous construisez votre propre application à partir de votre idée. Pour réussir en quelques semaines, la première version reste simple : comptes, fiches, statuts, recherche et tableau de bord. Les paiements, cartes ou photos viennent dans une version 2. Nous vérifions votre idée ensemble dès la première séance.</p></details>
+        <details><summary>Pourquoi un projet commun avant le mien ?</summary><p>Pour apprendre les outils et la méthode sans risque, tous ensemble : mêmes écrans, mêmes erreurs, mêmes solutions. Quand vous attaquez votre propre application, vous savez déjà faire chaque étape.</p></details>
+        <details><summary>Mon application sera-t-elle publiée sur Google Play ?</summary><p>Vous êtes accompagné à chaque étape : compte développeur, test avec 12 testeurs pendant 14 jours, demande de publication, réponses aux retours de Google. La décision de publication et son délai appartiennent à Google.</p></details>
+        <details><summary>Et si j’ai un iPhone ?</summary><p>Ce programme couvre Android et Google Play uniquement : il vous faut un téléphone Android pour tester votre application. Si votre téléphone principal est un iPhone, un deuxième téléphone Android ou un téléphone emprunté suffit.</p></details>
+        <details><summary>Comment se passent les séances en ligne ?</summary><p>En novembre, sur Zoom, depuis votre ordinateur, le lundi et le jeudi de 19 h à 21 h. Le lundi, on découvre l’étape de la semaine ; le jeudi, chacun avance et se débloque, en petits groupes si besoin. À partir de décembre, les rencontres ont lieu le samedi en salle, et le groupe WhatsApp prend le relais en semaine.</p></details>
+        <details><summary>Et si je manque une séance ?</summary><p>Les séances en ligne sont enregistrées, et chaque semaine dispose de supports écrits et d’une version de rattrapage du projet.</p></details>
+        <details><summary>Je n’ai pas de carte bancaire, comment faire ?</summary><p>Une carte prépayée Visa ou Mastercard suffit pour payer les outils. Vérifiez-la avant la séance de préparation : un petit paiement en ligne permet de s’assurer qu’elle fonctionne.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="conditions">
+    <div class="wrap">
+      <h2>Conditions</h2>
+      <ul class="conditions">
+        <li>L’inscription est confirmée à réception de l’acompte de 25 000 FCFA. Les deux versements suivants sont dus avant le 17 novembre et le 1er décembre.</li>
+        <li>La formation démarre à partir de 6 inscrits. Sinon, chacun choisit entre le report à la promotion suivante et le remboursement intégral.</li>
+        <li>Annulation avant le 26 octobre : remboursement intégral. Après le début de la formation, les versements échus ne sont pas remboursés.</li>
+        <li>Étape 1 : séances en ligne le lundi et le jeudi soir, en salle le samedi. Étape 2 : rencontres en salle le samedi et groupe WhatsApp.</li>
+        <li>Les outils sont payés directement aux fournisseurs par le participant.</li>
+        <li>L’accompagnement porte sur la première version de votre application, validée ensemble ; les fonctions au-delà font l’objet d’un devis séparé.</li>
+        <li>Le suivi se termine le 8 février 2027.</li>
+        <li>Vous restez propriétaire de votre idée, de votre code, de vos comptes et de votre application.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Formation « De l’idée à l’application mobile grâce à l’IA »</strong>, Abidjan, 2026.</p>
+    <p style="margin-top:6px">Contact : WhatsApp [numéro], e-mail [adresse].</p>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <span>10 places, inscriptions jusqu’au 30 octobre</span>
+  <a class="btn btn-gold" href="https://forms.gle/A-REMPLACER" target="_blank" rel="noopener">S’inscrire</a>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var motion = root.classList.contains('motion');
+  try {
+    // Éléments qui apparaissent au défilement
+    var groups = [
+      ['section.block h2', false], ['.lead', false], ['.features .feature', true], ['.examples', false],
+      ['.weeks li', false], ['.cost-wrap', false], ['.note', false], ['.two .panel', true],
+      ['.trainer > *', true], ['.workshop', false], ['.steps li', true], ['.faq details', true], ['.conditions li', true]
+    ];
+    groups.forEach(function (g) {
+      document.querySelectorAll(g[0]).forEach(function (el, i) {
+        el.setAttribute('data-reveal', '');
+        if (g[1]) el.style.setProperty('--i', i);
+      });
+    });
+    var total = document.getElementById('total');
+    function countUp(el) {
+      var end = parseInt(el.getAttribute('data-count'), 10), start = null;
+      function frame(t) {
+        if (start === null) start = t;
+        var p = Math.min(1, (t - start) / 1300), v = Math.round(end * (1 - Math.pow(1 - p, 3)) / 500) * 500;
+        el.textContent = '≈ ' + v.toLocaleString('fr-FR') + ' FCFA';
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+    if (motion && 'IntersectionObserver' in window) {
+      if (total) total.textContent = '≈ 0 FCFA';
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('is-in');
+          if (e.target.classList.contains('cost-wrap') && total) countUp(total);
+          io.unobserve(e.target);
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+      document.querySelectorAll('[data-reveal]').forEach(function (el) { io.observe(el); });
+    } else {
+      document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-in'); });
+    }
+
+    // Barre d'inscription mobile
+    var bar = document.querySelector('.sticky-cta'), heroCta = document.querySelector('.hero .cta-row');
+    if (bar && heroCta && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { bar.classList.toggle('show', !e.isIntersecting && e.boundingClientRect.top < 0); });
+      }).observe(heroCta);
+    } else if (bar) { bar.classList.add('show'); }
+
+    // Démonstration en boucle dans l'en-tête
+    if (!motion) return;
+    var typed = document.getElementById('typed'), status = document.getElementById('status');
+    var search = document.getElementById('demoSearch'), pill = document.getElementById('demoPill');
+    var hero = document.querySelector('.hero'), visible = true;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(hero);
+    }
+    function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+    async function waitActive() { while (!visible || document.hidden) await sleep(400); }
+    var scenes = [
+      { text: 'Ajoute une barre de recherche en haut de la liste.',
+        apply: function () { search.classList.add('on'); setTimeout(function () { search.classList.add('settled'); }, 1400); },
+        reset: function () { search.classList.remove('on', 'settled'); } },
+      { text: 'Passe Mariam Touré au statut Rendez-vous.',
+        apply: function () { pill.textContent = 'Rendez-vous'; pill.style.background = '#9A6B00'; pill.classList.remove('pulse'); void pill.offsetWidth; pill.classList.add('pulse'); },
+        reset: function () { pill.textContent = 'Nouveau'; pill.style.background = '#5B6475'; pill.classList.remove('pulse'); } }
+    ];
+    async function run() {
+      search.classList.remove('on', 'settled');
+      typed.textContent = ''; status.textContent = ''; status.classList.remove('done');
+      await sleep(1500);
+      for (var k = 0; ; k = (k + 1) % scenes.length) {
+        var sc = scenes[k];
+        await waitActive();
+        for (var c = 1; c <= sc.text.length; c++) { typed.textContent = sc.text.slice(0, c); await sleep(34); }
+        await sleep(450);
+        status.classList.remove('done'); status.textContent = 'Codex modifie l’application…';
+        await sleep(1300);
+        sc.apply();
+        status.classList.add('done'); status.textContent = 'C’est fait. Testez sur votre téléphone.';
+        await sleep(3200);
+        await waitActive();
+        sc.reset(); typed.textContent = ''; status.textContent = ''; status.classList.remove('done');
+        await sleep(700);
+      }
+    }
+    run();
+  } catch (err) {
+    root.classList.remove('motion');
+    document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-in'); });
+    var b = document.querySelector('.sticky-cta'); if (b) b.classList.add('show');
+  }
+})();
+</script>
+</body>
+</html>
